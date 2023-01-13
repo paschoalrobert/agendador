@@ -1,0 +1,30 @@
+from openyxl import Workbook, load_workbook
+from datetime import datetime
+
+class AgendaGEO:
+    def __init__(self):
+        #file_name = str(input("Planilha:")) # Nome do arquivo XLSX
+	wb = load_workbook('/data/calendario01.xlsx') # ABRE O ARQUIVO XLSX
+	for sheet in wb:    # PEGA AS ABAS ATIVAS NO EXCEL
+		print(sheet)    # PRINTA AS ABAS ATIVAS NO EXCEL
+    
+    def main(self):
+	choose_sheet = str(input("Selecione a Aba:"))
+	ws = wb[f'{choose_sheet}']
+	my_value = ws['A1'].value # Accesse valores
+	
+    def time(self):
+	hora = datetime.now()
+
+
+    def features(self):
+	ws2 = wb.create_sheet(title="OK") #CRIA UMA NOVA ABA
+	ws2["C1"] = "OK"
+        wb.save('Text.xlsx') # Salva a o arquivo XLSX	
+	ws.insert_rows(3) # Adiciona linha
+	ws.insert_cols(2)   # Adiciona coluna. Use o número da col.
+	wb.save('Test.xlsx')  # Lembre-se de que é preciso salvar para ver o resultado.
+	
+
+agenda = AgendaGEO()
+agenda.main()
